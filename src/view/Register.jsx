@@ -9,7 +9,7 @@ const Register = () => {
     const Navigate = useNavigate()
     const handleLogin = (e) => {
         e.preventDefault()
-        Navigate('/home')
+        Navigate('/login')
     }
   return (
     <div className='login__wrapper' >
