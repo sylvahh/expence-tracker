@@ -14,7 +14,7 @@ const Register = () => {
   return (
     <div className='login__wrapper' >
     <form action="" onSubmit={handleLogin}>
-              <h3>Register</h3>
+              <h3>Register </h3>
             
               <span  style={{color: 'red'}}>yo</span>
               <div>
