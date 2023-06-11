@@ -11,7 +11,6 @@ const ExpensesChart = (props) => {
   });
 
   const chartRef = useRef(null);
-  console.log(props.dataPoints)
   useEffect(() => {
     const ctx = document.getElementById('expenseChart');
    
