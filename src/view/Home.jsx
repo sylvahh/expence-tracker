@@ -1,12 +1,14 @@
-import React from 'react'
-import NewExpense from '../Components/NewExpense/NewExpense'
-import Expenses from '../Components/Expenses/Expenses'
+import React from 'react';
+import NewExpense from '../Components/NewExpense/NewExpense';
+import Expenses from '../Components/Expenses/Expenses';
 
-const Home = ({addExpenseHandler, updateExpense}) => {
+const Home = ({ addExpenseHandler, updateExpense }) => {
   return (
-    <div><NewExpense getExpenseData={addExpenseHandler} />
-    <Expenses items={updateExpense} /></div>
-  )
-}
+    <div>
+      <NewExpense getExpenseData={addExpenseHandler} />
+      <Expenses items={updateExpense} />
+    </div>
+  );
+};
 
-export default Home
+export default Home;

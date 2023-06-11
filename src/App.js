@@ -19,7 +19,7 @@ const DUMMYEXPENSES = [
     id: 'e2',
     title: 'Xbox console',
     price: 111,
-    date: new Date(2022, 12, 24),
+    date: new Date(2022, 11, 24),
   },
   {
     id: 'e3',
@@ -32,6 +32,37 @@ const DUMMYEXPENSES = [
     title: 'Setteled debt',
     price: 111,
     date: new Date(2021, 2, 4),
+  },
+
+  {
+    id: 'e5',
+    title: 'car',
+    price: 1110,
+    date: new Date(2023, 6, 5),
+  },
+  {
+    id: 'e6',
+    title: 'car',
+    price: 1110,
+    date: new Date(2023, 5, 19),
+  },
+  {
+    id: 'e7',
+    title: 'New TV',
+    price: 100,
+    date: new Date(2023, 6, 19),
+  },
+  {
+    id: 'e8',
+    title: 'New TV',
+    price: 100,
+    date: new Date(2023, 6, 19),
+  },
+  {
+    id: 'e9',
+    title: 'house',
+    price: 1000,
+    date: new Date(2023, 12, 19),
   },
 ];
 function App() {

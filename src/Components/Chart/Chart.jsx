@@ -1,17 +1,66 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Chart.css';
-import Chartbar from './ChartBar';
+import Chart from 'chart.js/auto';
 
-const Chart = (props) => {
-    const dataPointValue = props.dataPoints.map(dataPoint => dataPoint.value)
-    const totalMax = Math.max(...dataPointValue)
+
+const ExpensesChart = (props) => {
+  const dataPointLabel = []
+  const dataPointValue = props.dataPoints.map((dataPoint, index) => {
+    dataPointLabel.push(dataPoint.label) 
+    return dataPoint.value
+  });
+
+  const chartRef = useRef(null);
+  console.log(props.dataPoints)
+  useEffect(() => {
+    const ctx = document.getElementById('expenseChart');
+   
+    // Destroy existing chart instance if it exists
+     if (chartRef.current !== null) {
+      chartRef.current.destroy();
+    }
+    const chart =  new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: 
+        dataPointLabel
+        ,
+        datasets: [
+          {
+            label: `Expeneses`,
+            data: [...dataPointValue,],
+            borderWidth: 1,
+            backgroundColor: [
+              '#a892ee',
+            ],
+            borderColor: [
+              '#40005D',
+            ],
+          },
+        ],
+      },
+  
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        responsive:true
+      },
+    });
+  chartRef.current=chart
+
+  }, [dataPointValue])
+  
+
   return (
-    <div className='chart'>
-      {props.dataPoints.map((data) => (
-        <Chartbar key={data.id} value={data.value} maxValue={totalMax} label={data.label} />
-      ))}
-    </div>
+    <canvas className='chart' id='expenseChart'>
+      
+      
+    </canvas>
   );
 };
 
-export default Chart;
+export default ExpensesChart;
+
