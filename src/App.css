@@ -39,6 +39,7 @@
 .login__wrapper form button {
     background-color: #40005d;
     /* #a892ee; */
+    cursor: pointer;
     color: white;
     font-weight: 400;
     border: none;
@@ -46,6 +47,13 @@
     border-radius: 5px;
     margin: 1rem 0
 }
+.login__wrapper form button:hover,
+.login__wrapper form button:active {
+  background-color: #670694;
+  transition: all;
+  transition-duration: 300ms;
+}
+
  .login__wrapper form a {
     display: flex;
     justify-content: end;

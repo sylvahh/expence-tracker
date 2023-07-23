@@ -1,0 +1,10 @@
+.chartwrapper{
+    width: 100%;
+};
+
+@media only screen and (min-width: 1200px) {
+    .chartwrapper {
+      width: 75%;
+      height: 50vh;
+    }
+}

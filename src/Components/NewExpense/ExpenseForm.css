@@ -1,60 +1,72 @@
 .new-expense__controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    text-align: left;
-  }
-  
-  .new-expense__control label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  
-  .new-expense__control input {
-    font: inherit;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 20rem;
-    max-width: 100%;
-  }
-  
-  .new-expense__actions {
-    display: flex;
-    justify-content: center;
-    padding-top: 1rem;
-    gap: 2rem;
-    text-align: right;
-    transition: all;
-    transition-duration: 500ms;
-  }
-  @media only screen and (min-width: 600px){
-    .new-expense__actions{
-      justify-content: end;
-    }
-    .new-expense__controls{
-      justify-content: left;
-    }
-  }
-  .new-expense__actions .cancel{
-    background: white;
-    color: rgb(214, 45, 45);
-    font-weight: 500;
-    border: 1px solid rgba(255, 0, 0, 0.747);
-  }
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
 
-  .new-expense__actions .cancel:hover,
+.new-expense__response {
+  display: block;
+  color: rgba(255, 0, 0, 0.692);
+  padding: 5px;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 0, 0, 0.267);
+  background-color: rgba(255, 255, 255, 0.171);
+  max-width: 75%;
+
+}
+.new-expense__control label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.new-expense__control input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.new-expense__actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  gap: 2rem;
+  text-align: right;
+  transition: all;
+  transition-duration: 500ms;
+}
+@media only screen and (min-width: 600px) {
+  .new-expense__actions {
+    justify-content: end;
+  }
+  .new-expense__controls {
+    justify-content: left;
+  }
+}
+.new-expense__actions .cancel {
+  background: white;
+  color: rgb(214, 45, 45);
+  font-weight: 500;
+  border: 1px solid rgba(255, 0, 0, 0.747);
+}
+
+.new-expense__actions .cancel:hover,
 .new-expense__actions .cancel:active {
   background-color: rgb(214, 45, 45);
-  border-color:rgba(255, 0, 0, 0.747);
+  border-color: rgba(255, 0, 0, 0.747);
   color: white;
   transition: all;
   transition-duration: 300ms;
 }
-  .new-expense__actions :disabled {
-    opacity: 0.7;
-    cursor: default;
-  }
+.new-expense__actions :disabled {
+  opacity: 0.7;
+  cursor: default;
+}

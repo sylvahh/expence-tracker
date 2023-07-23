@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import './ExpenseForm.css';
+import { getData, makeApiRequest, responseHandler } from '../../utils';
 
 const ExpenseForm = (props) => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [isValid, setIsValid] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+
+  const token = getData('token')
 
   useEffect(() => {
     if (title.length > 0 && amount.length > 0 && date.length > 0) {
-      console.log('valid');
       setIsValid(true);
     } else setIsValid(false);
   }, [title, amount, date]);
+
   const titleHandler = (e) => {
+    setResponseMessage('')
     setTitle(e.target.value);
   };
   const amoutHandler = (e) => {
+    setResponseMessage('')
     setAmount(e.target.value);
   };
   const dateHandler = (e) => {
+    setResponseMessage('')
     setDate(e.target.value);
   };
 
@@ -28,17 +35,33 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: title,
-      price: +amount,
+      amount: +amount,
       date: new Date(date),
     };
-    props.getFormData(expenseData);
-    setTitle('');
-    setAmount('');
-    setDate('');
+    // props.getFormData(expenseData);
+    makeApiRequest('/new-expense', 'POST', expenseData,token)
+      .then((res) => {
+        console.log(res);
+        setTitle('');
+        setAmount('');
+        setDate('');
+        props.onCancel()
+        props.onUpdate()
+      })
+      .catch((err) => setResponseMessage(responseHandler(err)));
   };
+
+  const closeform = () => {
+    setTitle('');
+        setAmount('');
+        setDate('');
+        props.onCancel()
+  }
   return (
     <form action='' onSubmit={formHandler}>
+       { responseMessage && <span className='new-expense__response'>{responseMessage} </span>}
       <div className='new-expense__controls'>
+
         <div className='new-expense__control'>
           <label htmlFor='title'>Title</label>
           <input type='text' value={title} onChange={titleHandler} required />
@@ -60,7 +83,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className='new-expense__actions'>
-        <button type='button' className='cancel' onClick={props.onCancel}>
+        <button type='button' className='cancel' onClick={closeform}>
           {' '}
           Cancel
         </button>

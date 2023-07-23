@@ -1,12 +1,25 @@
 .expenses-list {
-
+width: 100%;
   height: 450px;
   overflow-y: auto;
     list-style: none;
     padding: 0 0.5rem;
+    
   }
   
   .expenses-list__fallback {
     color: white;
     text-align: center;
+    width: 100%;
+  }
+
+    @media only screen and (min-width: 1200px) {
+    .expenses-list {
+      width: 75%;
+    }
+  
+    .addExpenseBtn {
+      display: 'flex';
+      flex-direction: row;
+    }
   }

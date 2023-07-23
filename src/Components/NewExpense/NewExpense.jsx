@@ -3,6 +3,7 @@ import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
 const NewExpense = (props) => {
+  const {userData} = props
   const [showform, setShowform] = useState(false);
 
   const expenseFormHandler = (formData) => {
@@ -23,14 +24,14 @@ const NewExpense = (props) => {
   };
   const addExpenseBtn = ( 
     <div className='addExpenseBtn'>
-      <span style={{fontSize:'20px', fontWeight:'500', textAlign:'left', color:'#EEEEAA'}}> Good evening <span style={{color:' #40005d'}}>sylvah</span>   </span>
+      <span style={{ fontSize: '20px', fontWeight: '500', textAlign: 'left', color: '#EEEEAA' }}> Good evening <span style={{ color: ' #40005d' }}>{ userData && userData.firstName}</span>   </span>
       <button onClick={buttonHandler}>Add New Expense</button>
     </div>
   )
   return (
     <div className='new-expense'>
       {!showform && addExpenseBtn}
-      {showform && <ExpenseForm getFormData={expenseFormHandler} onCancel={cancelHandler} />}
+      {showform && <ExpenseForm getFormData={expenseFormHandler} onUpdate={props.onUpdate} onCancel={cancelHandler} />}
     </div>
   );
 };
