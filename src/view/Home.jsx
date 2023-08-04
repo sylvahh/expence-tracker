@@ -21,7 +21,6 @@ const Home = () => {
       makeApiRequest('/me', 'GET', {}, token)
         .then((res) => {
           const data = res.data.user;
-          console.log(res);
           setuserData(data);
           setExpenses(
             data.expenses.map(({ id, title, amount, date }) => ({

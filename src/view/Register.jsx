@@ -8,10 +8,13 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const Navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
+    setResponseMessage('');
+    setIsDisabled(true);
     const data = {
       firstName,
       lastName,
@@ -20,8 +23,15 @@ const Register = () => {
     };
 
     makeApiRequest('/register', 'POST', data)
-      .then((res) => { console.log(res); saveData('token', res.data.token);  Navigate('/')})
-      .catch((err) => setResponseMessage(responseHandler(err),))
+      .then((res) => {
+        saveData('token', res.data.token);
+        Navigate('/');
+        setIsDisabled(false);
+      })
+      .catch((err) => {
+        setResponseMessage(responseHandler(err));
+        setIsDisabled(false);
+      });
   };
   return (
     <div className='login__wrapper'>
@@ -69,7 +79,7 @@ const Register = () => {
             // required
           />
         </div>
-        <button type='submit'>Register</button>
+        <button type='submit' disabled={isDisabled}>Register</button>
         <a href='/'>Login</a>
       </form>
     </div>
