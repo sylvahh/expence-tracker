@@ -29,7 +29,7 @@ const Expenses = (props) => {
       </div>
       <div className='expenses_sections'>
         {showChart && <ExpenseChart expenses={filteredExpenses} />}
-        <ExpensesList items={filteredExpenses} />
+        <ExpensesList currency={props.currency} items={filteredExpenses} />
       </div>
     </div>
   );

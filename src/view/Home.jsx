@@ -4,15 +4,12 @@ import Expenses from '../Components/Expenses/Expenses';
 import { getData, makeApiRequest, responseHandler } from '../utils';
 import { useNavigate } from 'react-router-dom';
 
-const style = {
-  display: 'flex',
-  justifyContent: 'end',
-  margin: '10px',
-};
+
 const Home = () => {
   const [userData, setuserData] = useState();
   const [expenses, setExpenses] = useState([]);
   const [updateState, setUpdateState] = useState(false);
+  const [currency, setCurrency ] = useState('₦')
   const token = getData('token');
   const Navigate = useNavigate();
 
@@ -51,14 +48,18 @@ const Home = () => {
   const handleUpdate = () => setUpdateState(!updateState);
 
   return (
-    <div>
-      <div style={style} className='expenses__showchart'>
+    <div className='homePage_wrapper'>
+      <div  className='top-nav'>
+        <select  onChange={(e) => setCurrency(e.target.value)} name="currency" id="">
+          <option value='₦'>₦</option>
+          <option value='$'>$</option>
+        </select>
         <button className='' onClick={handleLogout}>
           logout{' '}
         </button>
       </div>
       <NewExpense userData={userData} onUpdate={handleUpdate} />
-      <Expenses items={expenses} />
+      <Expenses items={expenses} currency={currency} />
     </div>
   );
 };
