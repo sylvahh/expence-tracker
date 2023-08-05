@@ -70,3 +70,6 @@ export const responseHandler = (res) => {
 
   return message[0];
 };
+export const numberWithCommas = (num) => {
+  return num === undefined ? null : num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

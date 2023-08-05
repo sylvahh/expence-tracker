@@ -2,6 +2,7 @@ import React from 'react'
 import ExpenseDate from './ExpenseDate';
 // import { Expenceitem } from './StyledDiv';
 import './ExpenseItem.css'
+import { numberWithCommas } from '../../utils';
 
 const ExpenseItem = (props) => {
   return (
@@ -10,7 +11,7 @@ const ExpenseItem = (props) => {
           <div className="expense-item__description">
               <h2>{props.title}</h2>
               <div className="expense-item__price">
-              ₦{props.price}
+              ₦{numberWithCommas(props.price)}
               </div>
           </div>
       </li>
